@@ -6,7 +6,8 @@ public class HoveringPod : MonoBehaviour {
     public float hoverHeight = 2f;
     public float turnSpeed = 2f;
     public float maxSpeed = 2f;
-    
+    public LayerMask whatToHover;
+
     private PlayerInput input;
     private float actualGravityInducedSpeed = 0f;
 
@@ -41,7 +42,7 @@ public class HoveringPod : MonoBehaviour {
         Vector3 altitudeVector = Vector3.zero;
         Vector3 gravitySpeedVevtor = Vector3.zero;
 
-        if(Physics.Raycast(transform.position, -transform.up, out hitInfo, hoverHeight))
+        if(Physics.Raycast(transform.position, -transform.up, out hitInfo, hoverHeight, whatToHover))
         {
             Debug.Log("ca touche");
             // transform.position = Vector3.Lerp(transform.position, hitInfo.normal, Time.deltaTime);
